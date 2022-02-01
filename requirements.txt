@@ -1,2 +1,5 @@
 pyTelegramBotAPI
 psycopg2-binary
+selenium
+beautifulsoup4
+fake-useragent
