@@ -100,10 +100,10 @@ def products_handler(message, selected_retailer):
 
     selected_subcat = message.text
 
-    back_markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    next = types.KeyboardButton("Дальше")
-    back = types.KeyboardButton("Назад")
-    back_markup.add(back, next)
+#     back_markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+#     next = types.KeyboardButton("Дальше")
+#     back = types.KeyboardButton("Назад")
+#     back_markup.add(back, next)
     with connection.cursor() as cursor:
         cursor.execute(
             f"SELECT * FROM products WHERE (fk_retailer, fk_subcat) = ('{selected_retailer}', '{selected_subcat}');"
@@ -119,11 +119,11 @@ def products_handler(message, selected_retailer):
 
         bot.send_message(message.chat.id, card)
         if index != 0 and index%20 == 0:
+            time.sleep(3)
 
-            bot.send_message(message.chat.id, card, reply_markup=back_markup)
-            if message.text == "Дальше":
-                pass
-            elif message.text == "Назад":
-                break
+#             if message.text == "Дальше":
+#                 pass
+#             elif message.text == "Назад":
+#                 break
 
 bot.polling(none_stop=True)
